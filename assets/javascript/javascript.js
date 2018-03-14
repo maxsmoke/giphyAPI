@@ -36,7 +36,7 @@ $(document).ready(function() {
       method: "GET"
     }).then(function(response) {
       var results = response.data;
-
+    
       for (var count = 0; count < results.length; count++) {
         var imgDiv = $("<div class='item'>");
         var gifRating = results[count].rating;
@@ -61,10 +61,6 @@ $(document).ready(function() {
 
   //write a function that pauses and starts images on click
   $("#image-results").on("click", ".gif", function() {
-    // console.log("in animate or pause");
-
-    // cant get past image-results!!!!!!
-
     console.log("Current state: " + $(this).attr("data-state"));
     var state = $(this).attr("data-state");
     if (state === "still") {
@@ -76,15 +72,18 @@ $(document).ready(function() {
     }
   });
 
+  // code for adding to the array
   $("#submit").on("click", function() {
     $(".gif-topics").remove();
+
     var topicAdder = $("#topic-adder");
     var newTopic = topicAdder.val();
     topics.push(newTopic);
     topicAdder.val("");
+
     btnBulider();
   });
-  // code for adding to the array3
+  
 
   btnBulider();
 });
